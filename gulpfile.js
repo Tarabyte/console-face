@@ -15,7 +15,7 @@ gulp.task('hint', function(){
 gulp.task('test', function() {
     return gulp.src('./test/tests.js')
             .pipe(mocha({
-            reporter: 'nyan'
+            reporter: 'tap'
         }));
 });
 

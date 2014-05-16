@@ -4,7 +4,7 @@
   "description": "console.face command to log ascii troll faces",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter spec"
+    "test": "mocha --reporter tap"
   },
   "repository": {
     "type": "git",
