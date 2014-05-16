@@ -6,7 +6,9 @@ var gulp = require('gulp'),
     browserify = require('gulp-browserify');
 
 gulp.task('hint', function(){
-    return gulp.src('index.js').pipe(hint());
+    return gulp.src('index.js')
+            .pipe(hint())
+            .pipe(hint.reporter('default'));
 });
 
 gulp.task('test', function() {
