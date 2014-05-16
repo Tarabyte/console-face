@@ -3,7 +3,8 @@ var gulp = require('gulp'),
     hint = require('gulp-jshint'),
     mocha = require('gulp-mocha'),
     rename = require('gulp-rename'),
-    browserify = require('gulp-browserify');
+    browserify = require('gulp-browserify'),
+    uglify = require('gulp-uglify');
 
 gulp.task('hint', function(){
     return gulp.src('index.js')
@@ -22,6 +23,7 @@ gulp.task('build', function() {
     return gulp.src('index.js')
         .pipe(rename('console.face.js'))
         .pipe(browserify())
+        .pipe(uglify())
         .pipe(gulp.dest('./'));
 });
 
