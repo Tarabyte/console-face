@@ -33,13 +33,11 @@
     "mocha": "^1.18.2"
   },
     "testling": {
-        "files": "test/*.js",
+        "harness": "mocha-bdd",
+        "files": "test/tests.js",
         "browsers": [
-          "ie/10..latest",
-          "chrome/22..latest",
-          "firefox/16..latest",
-          "safari/latest",
-          "opera/11.0..latest"
+            "firefox/latest",
+            "chrome/latest"
     ]
   }
 }
