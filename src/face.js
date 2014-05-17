@@ -22,7 +22,9 @@ var facesCache = {},
             var src;
             try {
                 src = fs.readFileSync(toPath(name), {encoding: 'utf-8'});
-                console.warn("Got file: " + name);
+            }
+            catch (e) {
+                console.error('Error on getting file: ' + name + ' ' + e);
             }
             finally {
                 return src ? compiler(src) : troll;    
