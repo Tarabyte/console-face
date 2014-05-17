@@ -15,14 +15,16 @@ gulp.task('hint', function(){
 gulp.task('test', function() {
     return gulp.src('./test/tests.js')
             .pipe(mocha({
-            reporter: 'tap'
+            reporter: 'spec'
         }));
 });
 
 gulp.task('build', function() {
     return gulp.src('index.js')
         .pipe(rename('console.face.js'))
-        .pipe(browserify())
+        .pipe(browserify({
+            ignore: ['fs', 'path']
+        }))
         .pipe(uglify())
         .pipe(gulp.dest('./'));
 });
