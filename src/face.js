@@ -7,7 +7,7 @@ var facesCache = {},
     folder = 'faces',
     defaultName = 'troll',
     getFileName = function(name) {
-        return name.replace(/\s+/g, '_') + '.txt';
+        return name.replace(/\s+/g, '_').toLowerCase() + '.txt';
     },
     transport = typeof window === 'undefined' ? //node env
     (function(){
