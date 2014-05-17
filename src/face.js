@@ -44,8 +44,8 @@ var facesCache = {},
     }()),
     compiler = function(src) {
         return function() {
-            this.log(src);
-        }.bind(console);        
+            console.log(src);
+        };        
     },
     troll;
 
