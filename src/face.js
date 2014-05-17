@@ -22,6 +22,7 @@ var facesCache = {},
             var src;
             try {
                 src = fs.readFileSync(toPath(name), {encoding: 'utf-8'});
+                console.warn("Got file: " + name);
             }
             finally {
                 return src ? compiler(src) : troll;    
@@ -38,6 +39,8 @@ var facesCache = {},
             var request = new XMLHttpRequest();
             request.open('GET', toUrl(name), false);
             request.send(null);
+            
+            console.warn('Loading files in browser mode.');
             
             return request.status === 200 ? compiler(request.responseText) : troll;
         };
