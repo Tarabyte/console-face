@@ -37,7 +37,10 @@
         "files": "test/tests.js",
         "browsers": [
             "firefox/latest",
-            "chrome/latest"
+            "chrome/latest",
+            "opera/11..latest",
+            "safari/latest",
+            "ie/9..latest"
     ]
   }
 }
