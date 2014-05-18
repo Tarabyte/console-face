@@ -30,31 +30,11 @@ var facesCache = {},
         };
     }()): //browser
     (function(){
-        var separator = '/';
-        
         function toUrl(name) {
-            var base = window.location.pathname.split(separator), parts = [];
-            base.pop();
-            base = base.concat(__dirname.split(/\/|\\/), [folder]);
-            
-            base.forEach(function(part) {
-                if(!part) { 
-                    return;    
-                }
-                if(part === '.') { //current dir
-                    return;    
-                }
-                
-                if(part === '..') { //parent
-                    return parts.pop();    
-                }
-                
-                return parts.push(part);
-            });
-            
-            parts.push(getFileName(name));
-            
-            return parts.join(separator);
+            return __dirname.split(/\/|\\/)
+                            .filter(Boolean)
+                            .concat([folder, getFileName(name)])
+                            .join('/');            
         }
         
         return function(name) {
