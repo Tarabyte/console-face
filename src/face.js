@@ -1,4 +1,4 @@
-/*global require, __dirname, XMLHttpRequest*/
+/*global require, __dirname, XMLHttpRequest, window*/
 console.face = function(name){
     getFace(name)();
 };
@@ -30,8 +30,31 @@ var facesCache = {},
         };
     }()): //browser
     (function(){
+        var separator = '/';
+        
         function toUrl(name) {
-            return [__dirname, 'faces', encodeURIComponent(getFileName(name))].join('/');
+            var base = window.location.pathname.split(separator), parts = [];
+            base.pop();
+            base = base.concat(__dirname.split(/\/|\\/), [folder]);
+            
+            base.forEach(function(part) {
+                if(!part) { 
+                    return;    
+                }
+                if(part === '.') { //current dir
+                    return;    
+                }
+                
+                if(part === '..') { //parent
+                    return parts.pop();    
+                }
+                
+                return parts.push(part);
+            });
+            
+            parts.push(getFileName(name));
+            
+            return parts.join(separator);
         }
         
         return function(name) {
